@@ -249,6 +249,37 @@ export interface SecurityAlert {
   read: boolean;
 }
 
+export interface ActivityItem {
+  id: string;
+  type: 'send' | 'receive' | 'swap' | 'auth' | 'stake';
+  title: string;
+  counterparty: string;
+  amount?: string;
+  status: 'completed' | 'pending' | 'pending_confirmation' | 'failed';
+  timestamp: string;
+}
+
+export interface Transaction {
+  id: string;
+  asset: string;
+  amount: number;
+  usdValue: number;
+  from: string;
+  to: string;
+  network: string;
+  gasFee: number;
+  gasFeeUsd: number;
+  status: string;
+}
+
+export interface Permission {
+  id: string;
+  label: string;
+  description: string;
+  scope: 'wallet' | 'identity' | 'admin' | 'compliance';
+  granted: boolean;
+}
+
 export interface DashboardData {
   totalRecords?: number;
   activeConsents?: number;
