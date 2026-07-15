@@ -67,6 +67,13 @@ export function Dashboard() {
     );
   }
 
+  // ADD THIS — narrows `data` from `DashboardData | null` to `DashboardData`
+  // for everything below. Also guards a real edge case: loading finished,
+  // no error was thrown, but data still somehow never got set.
+  if (!data) {
+    return null;
+  }
+
   const isPatient = profile?.role === 'patient';
   const isDoctor = profile?.role === 'doctor';
   const isAdmin = profile?.role === 'admin';
